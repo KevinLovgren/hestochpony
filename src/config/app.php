@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Provider\YugiProvider::class,
 
         /*
          * Application Service Providers...
