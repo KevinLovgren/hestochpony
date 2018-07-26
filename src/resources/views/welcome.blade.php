@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravelo
+                    Laravelu
                 </div>
 
                 <div class="links">
