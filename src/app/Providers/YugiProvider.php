@@ -16,8 +16,6 @@ class YugiProvider extends ServiceProvider
         $this->app->bind('App\Repositories\YugiRepository', function($app) {
             return new \App\Repositories\YugiRepository(\DB::connection('hop'));
         });
-
-        parent::boot();
     }
 
     /**
