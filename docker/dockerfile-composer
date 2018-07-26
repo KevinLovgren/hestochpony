@@ -1,0 +1,5 @@
+FROM composer
+RUN apk update && \
+    apk add openldap-dev && \
+    docker-php-ext-configure ldap && \
+    docker-php-ext-install ldap
