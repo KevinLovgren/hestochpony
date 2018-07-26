@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class yugi_provider extends ServiceProvider
+class YugiProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
