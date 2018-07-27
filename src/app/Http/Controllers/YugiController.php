@@ -11,7 +11,7 @@ class YugiController extends Controller
 
     function index(YugiRepository $yugi_repository)
     {
-        $names = $yugi_repository();
+        $names = yugi_repository();
         return view('yugi_start', ['names' => $names]);
     }
 }
