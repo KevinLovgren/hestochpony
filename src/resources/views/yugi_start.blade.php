@@ -79,9 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Decks: {{ $names }}
+                    Decks:
+                    <ul>
+                    @foreach ($names as $name)
+                        <li>{{ $name }}</li>
+                    @endforeach
+                    </ul>
                 </div>
-
             </div>
         </div>
     </body>
