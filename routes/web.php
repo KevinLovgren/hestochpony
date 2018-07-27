@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->to('home');
+    return redirect()->to('decks');
 });
 
 Auth::routes();

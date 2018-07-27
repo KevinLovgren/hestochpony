@@ -34,8 +34,8 @@
                                 @if ($deck->user_id == $user->id)
                                 <tr>
                                     <td>{{ $deck->name }}</td>
-                                    <td>10</td>
-                                    <td>50%</td>
+                                    <td>{{ getTotalDuelCount($deck->id) }}</td>
+                                    <td>{{ asPercent(getTotalWinrate($deck->id)) }}</td>
                                 </tr>
                                 @endif
                                 @endforeach
