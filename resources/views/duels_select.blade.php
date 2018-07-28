@@ -10,8 +10,14 @@
                 <div class="col">
                     <div class="form-group">
                         <select class="form-control" name="first_deck">
-                            @foreach ($decks as $deck)
-                                <option>{{$deck->name}}</option>
+                            @foreach ($users as $user)
+                                <optgroup label="{{ $user->name }}">
+                                    @foreach ($decks as $deck)
+                                    @if ($deck->user_id == $user->id)
+                                        <option>{{$deck->name}}</option>
+                                    @endif
+                                    @endforeach
+                                <optgroup>
                             @endforeach
                         </select>
                     </div>
@@ -23,9 +29,15 @@
 
                 <div class="col">
                     <div class="form-group">
-                        <select class="form-control" name="second_deck">
-                            @foreach ($decks as $deck)
-                                <option>{{$deck->name}}</option>
+                        <select class="form-control" name="first_deck">
+                            @foreach ($users as $user)
+                                <optgroup label="{{ $user->name }}">
+                                    @foreach ($decks as $deck)
+                                    @if ($deck->user_id == $user->id)
+                                        <option>{{$deck->name}}</option>
+                                    @endif
+                                    @endforeach
+                                <optgroup>
                             @endforeach
                         </select>
                     </div>
