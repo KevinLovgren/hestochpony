@@ -70,7 +70,7 @@ class YugiController extends Controller
         $users = User::All();
         $duels = Deck::All();
 
-        if($request->winner == "The winner is...")
+        if($request->winner == "")
         {
             return view('duels_view', ['decks' => $decks, 'users' => $users, 'duels' => $duels, 'first_deck' => getDeckFromName($request->first_deck), 'second_deck' => getDeckFromName($request->second_deck)]);
         }

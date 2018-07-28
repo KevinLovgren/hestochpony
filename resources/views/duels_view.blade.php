@@ -9,7 +9,7 @@
                     @csrf
                         <div class="container" style="max-width:300px;">
                             <select class="form-control" name="winner">
-                                <option>The winner is...</option>
+                                <option value=''>The winner is...</option>
                                 <option>{{$first_deck->name}}</option>
                                 <option>{{$second_deck->name}}</option>
                             </select>

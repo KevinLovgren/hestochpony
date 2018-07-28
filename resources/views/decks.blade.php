@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-                <a class="btn btn-primary" style="float:right;margin:10px;" href="{{ route('decks_register') }}">Register new deck</a>
             <div class="card">
                 <div class="card-header">Decks</div>
 
@@ -19,7 +18,8 @@
                             </div>
 
                             <div id="card{{$user->id}}" class="collapse" aria-labelledby="header{{$user->id}}">
-                            <div class="card-body">
+                                <div class="card-body">
+                                    <div style="text-align:center;margin:10px">Winrate: {{asPercent(getUserWinrate($user->id))}} | Duels: {{getUserDuelCount($user->id)}}</div>
 
                             <table class="table table-striped">
                                 <thead>

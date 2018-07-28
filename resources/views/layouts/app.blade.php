@@ -36,20 +36,12 @@
                     <ul class="navbar-nav mr-auto">
                         @guest
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Yu-Gi-Oh <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('decks') }}">
-                                    Decks
-                                </a>
-                                <a class="dropdown-item" href="{{ route('duels') }}">
+                                <a class="nav-link" href="{{ route('duels') }}">
                                     Duels
                                 </a>
-                            </div>
-                        </li>
+                                <a class="nav-link" href="{{ route('decks') }}">
+                                    Decks
+                                </a>
                         @endguest
                     </ul>
 
@@ -70,6 +62,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('decks_register') }}">
+                                            Register deck
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,7 +75,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
                                 </div>
+
                             </li>
                         @endguest
                     </ul>
