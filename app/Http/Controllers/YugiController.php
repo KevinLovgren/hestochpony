@@ -88,6 +88,32 @@ class YugiController extends Controller
         }
         $duel->save();
 
+        return view('duels_view', ['winner' => $winner->name, 'decks' => $decks, 'users' => $users, 'duels' => $duels, 'first_deck' => getDeckFromName($request->first_deck), 'second_deck' => getDeckFromName($request->second_deck)])->with('success', 'Win registered!');
+    }
+
+    public function duels_undo(Request $request)
+    {
+        $decks = Deck::All();
+        $users = User::All();
+        $duels = Deck::All();
+        if($request->winner == "")
+        {
+            return view('duels_view', ['decks' => $decks, 'users' => $users, 'duels' => $duels, 'first_deck' => getDeckFromName($request->first_deck), 'second_deck' => getDeckFromName($request->second_deck)]);
+        }
+
+        $duel = getDuel(getDeckFromName($request->first_deck)->id, getDeckFromName($request->second_deck)->id);
+        $winner = getDeckFromName($request->winner);
+
+        if($duel->first_deck_id == $winner->id)
+        {
+            $duel->first_wins -= 1;
+        }
+        else if($duel->second_deck_id == $winner->id)
+        {
+            $duel->second_wins -= 1;
+        }
+        $duel->save();
+
         return view('duels_view', ['decks' => $decks, 'users' => $users, 'duels' => $duels, 'first_deck' => getDeckFromName($request->first_deck), 'second_deck' => getDeckFromName($request->second_deck)])->with('success', 'Win registered!');
     }
 }

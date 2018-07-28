@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+@if(isset($winner))
+<div class="container" style="float:right">
+    <form action="{{ route('duels_undo') }}" method="POST" autocomplete="off">
+        @csrf
+        <input type="hidden" name="winner" value="{{$winner}}">
+        <input type="hidden" name="first_deck" value="{{$first_deck->name}}">
+        <input type="hidden" name="second_deck" value="{{$second_deck->name}}">
+        <button type="submit" class="btn btn-light" style="float:right">Undo</button>
+    </form>
+</div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div style="width:100%;text-align:center;margin:20px">

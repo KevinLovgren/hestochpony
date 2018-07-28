@@ -1,5 +1,9 @@
 <?php
 
+if (env('FORCE_HTTPS') === true) {
+    URL::forceScheme('https');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +14,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return redirect()->to('decks');
@@ -39,3 +44,4 @@ Route::get('/duels', function(){
 Route::get('/duels/select', 'YugiController@select_duels')->name('duels_select');
 Route::post('/duels/view', 'YugiController@select_duels_submit')->name('duels_select_submit');
 Route::post('/duels/view/winner', 'YugiController@duels_submit_winner')->name('duels_submit_winner');
+Route::post('/duels/view/undo', 'YugiController@duels_undo')->name('duels_undo');
