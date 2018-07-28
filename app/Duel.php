@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\AuditTrait;
 
 class Duel extends Model
 {
+    use AuditTrait;
+
     /**
      * The attributes that are mass assignable.
      *
