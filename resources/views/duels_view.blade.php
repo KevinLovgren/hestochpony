@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div style="width:100%;text-align:center;margin:20px">
-            <h2 class="display-5">Duel Count: </br> {{ getDuelCount($first_deck->id, $second_deck->id) }}</h2> </br>
+            <h2 class="display-5">Duel Count: </br> {{ getDuelCount($first_deck->id, $second_deck->id) }}</h2>
+            <h6 class="display-6" style="color:#6f6f70">{{ getVsDuelCount($first_deck->user_id, $second_deck->user_id) }}</h6>
             <form action="{{ route('duels_submit_winner') }}" method="POST" autocomplete="off">
                     @csrf
                         <div class="container" style="max-width:300px;">
@@ -28,8 +29,7 @@
                         <li class="list-group-item">Total Win Percent:<p style="text-align:center">{{ asPercent(getTotalWinrate($first_deck->id)) }}</p></li>
                         <li class="list-group-item">Total Duel Count:<p style="text-align:center">{{ getTotalDuelCount($first_deck->id) }}</p></li>
                         <li class="list-group-item">Player:<p style="text-align:center">{{ getUserName($first_deck->user_id) }}</p></li>
-                        <li class="list-group-item">Player Total Win Percent:<p style="text-align:center">{{ asPercent(getUserWinrate($first_deck->user_id)) }}</p></li>
-                        <li class="list-group-item">Player Total Duel Count:<p style="text-align:center">{{ getUserDuelCount($first_deck->user_id) }}</p></li>
+                        <li class="list-group-item">Player Win Percent:<p style="text-align:center">{{ asPercent(getVsWinrate($first_deck->user_id, $second_deck->user_id)) }}</p></li>
                     </ul>
                 </div>
             </div>
@@ -43,8 +43,7 @@
                         <li class="list-group-item">Total Win Percent:<p style="text-align:center">{{ asPercent(getTotalWinrate($second_deck->id)) }}</p></li>
                         <li class="list-group-item">Total Duel Count:<p style="text-align:center">{{ getTotalDuelCount($second_deck->id) }}</p></li>
                         <li class="list-group-item">Player:<p style="text-align:center">{{ getUserName($second_deck->user_id) }}</p></li>
-                        <li class="list-group-item">Player Total Win Percent:<p style="text-align:center">{{ asPercent(getUserWinrate($second_deck->user_id)) }}</p></li>
-                        <li class="list-group-item">Player Total Duel Count:<p style="text-align:center">{{ getUserDuelCount($second_deck->user_id) }}</p></li>
+                        <li class="list-group-item">Player Win Percent:<p style="text-align:center">{{ asPercent(getVsWinrate($second_deck->user_id, $first_deck->user_id)) }}</p></li>
                     </ul>
                 </div>
             </div>
