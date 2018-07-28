@@ -29,7 +29,7 @@
 
                 <div class="col">
                     <div class="form-group">
-                        <select class="form-control" name="first_deck">
+                        <select class="form-control" name="second_deck">
                             @foreach ($users as $user)
                                 <optgroup label="{{ $user->name }}">
                                     @foreach ($decks as $deck)
