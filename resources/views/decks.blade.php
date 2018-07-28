@@ -19,7 +19,14 @@
 
                             <div id="card{{$user->id}}" class="collapse" aria-labelledby="header{{$user->id}}">
                                 <div class="card-body">
-                                    <div style="text-align:center;margin:10px">Winrate: {{asPercent(getUserWinrate($user->id))}} | Duels: {{getUserDuelCount($user->id)}}</div>
+                                    <div style="float:left">
+                                        <div style="text-align:center;margin:10px;">Vs You</div>
+                                        <div style="text-align:center;margin:10px;">Winrate: {{asPercent(getVsWinrate($user->id, getCurrentUser()->id))}} | Duels: {{getVsDuelCount($user->id, getCurrentUser()->id)}}</div>
+                                    </div>
+                                    <div style="float:right">
+                                        <div style="text-align:center;margin:10px;">Total</div>
+                                        <div style="text-align:center;margin:10px;">Winrate: {{asPercent(getUserWinrate($user->id))}} | Duels: {{getUserDuelCount($user->id)}}</div>
+                                    </div>
 
                             <table class="table table-striped">
                                 <thead>
@@ -33,7 +40,17 @@
                                 @foreach ($deckList as $deck)
                                 @if ($deck->user_id == $user->id)
                                 <tr>
-                                    <td>{{ $deck->name }}</td>
+                                    <td>{{ $deck->name }}
+                                    @if (getTotalDuelCount($deck->id) >= 10 && getTotalWinrate($deck->id) >= 0.8)
+                                    <span class="badge badge-danger">OP</span>
+                                    @endif
+                                    @if (getTotalDuelCount($deck->id) >= 10 && getTotalWinrate($deck->id) <= 0.2)
+                                    <span style="font-size:18px">💩</span>
+                                    @endif
+                                    @if (getFavoriteDeckId($deck->user_id) == $deck->id)
+                                    <span style="font-size:18px">⭐️</span>
+                                    @endif
+                                    </td>
                                     <td>{{ getTotalDuelCount($deck->id) }}</td>
                                     <td>{{ asPercent(getTotalWinrate($deck->id)) }}</td>
                                 </tr>

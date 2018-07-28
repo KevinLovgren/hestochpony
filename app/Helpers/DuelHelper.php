@@ -129,6 +129,47 @@ function getUserDuelCount($userid)
     return $duel_count;
 }
 
+function getVsDuelCount($first_userid, $second_userid)
+{
+    $first_decks = Deck::where('user_id', $first_userid)->get();
+    $second_decks = Deck::where('user_id', $second_userid)->get();
+
+    $duel_count = 0;
+
+    foreach ($first_decks as $first_deck)
+    {
+        foreach($second_decks as $second_deck)
+        {
+            $duel_count += getDuelCount($first_deck->id, $second_deck->id);
+        }
+    }
+
+    return $duel_count;
+}
+
+function getVsWinrate($first_userid, $second_userid)
+{
+    $first_decks = Deck::where('user_id', $first_userid)->get();
+    $second_decks = Deck::where('user_id', $second_userid)->get();
+
+    $winrate = 0;
+
+    foreach ($first_decks as $first_deck)
+    {
+        foreach($second_decks as $second_deck)
+        {
+            $winrate += getWinrate($first_deck->id, $second_deck->id) * getDuelCount($first_deck->id, $second_deck->id);
+        }
+    }
+
+    if($winrate != 0)
+    {
+        $winrate = $winrate / getVsDuelCount($first_userid, $second_userid);
+    }
+
+    return $winrate;
+}
+
 function calculateWinrate($wins, $loses)
 {
     $winrate = 0;
