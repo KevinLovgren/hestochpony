@@ -16,7 +16,7 @@ function getDuel($firstID, $secondId)
     if($duel == null)
     {
         $duel = new Duel();
-        $duel->first_deck_id = 1;
+        $duel->first_deck_id = $firstID;
         $duel->second_deck_id = $secondId;
         $duel->save();
     }
